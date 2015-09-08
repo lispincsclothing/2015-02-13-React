@@ -27,15 +27,18 @@ var Menu = React.createClass({
       return item.type == 'mexican';
     }
 
-    var mexicanFood = DATA.items.filter((item) => item.type == 'mexican');
-    var mexicanFoodli = mexicanFood.sort(sortBy('name')).map((n) => <li>{n.name}</li>);
+    var sortedItemsLi = DATA.items.filter((item) => {
+      return item.type === 'mexican';
+    })
+    .sort(sortBy('name'))
+    .map((n) => <li>{n.name}</li>);
     return (
       <div>
         <h1>
           {DATA.title}
         </h1>
         <ul>
-          {mexicanFoodli}
+          {sortedItemsLi}
         </ul>
       </div>
     );
