@@ -12,6 +12,7 @@
 //   prop name from "email" to "loginId", send a bad value, and then
 //   fix the code to make the warning make sense.
 // - how many times does `getDefaultProps` get called?
+//  - JUST ONCE!
 // - experiment with some of the other propTypes, send improper values
 //   and look at the messages you get
 ////////////////////////////////////////////////////////////////////////////////
