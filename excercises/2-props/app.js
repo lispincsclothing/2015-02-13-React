@@ -24,7 +24,7 @@ var warning = require('react/lib/warning');
 var GRAVATAR_URL = "http://gravatar.com/avatar";
 
 var USERS = [
-  { id: 1, name: 'Ryan Florence', email: 'rpflorencegmail.com' },
+  { id: 1, name: 'Ryan Florence', email: 'rpflorence@gmail.com' },
   { id: 2, name: 'Michael Jackson', email: 'mjijackson@gmail.com' }
 ];
 
@@ -35,9 +35,17 @@ var emailType = (props, propName, componentName) => {
   );
 };
 
+var sizeType = (props, propName, componentName) => {
+  warning(
+    !isNaN(parseInt(props[propName])),
+    'Size property is not a number'
+  );
+};
+
 var Gravatar = React.createClass({
   propTypes: {
-    email: emailType
+    email: emailType,
+    size: sizeType
   },
 
   getDefaultProps () {
@@ -59,7 +67,7 @@ var App = React.createClass({
     var users = this.props.users.map((user) => {
       return (
         <li key={user.id}>
-          <Gravatar email={user.email} size={36} /> {user.name}
+          <Gravatar email={user.email} size={100} /> {user.name}
         </li>
       );
     });
