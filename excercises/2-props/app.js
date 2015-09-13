@@ -30,8 +30,8 @@ var USERS = [
 
 var emailType = (props, propName, componentName) => {
   warning(
-    validateEmail(props.email),
-    `Invalid email '${props.email}' sent to 'Gravatar'. Check the render method of '${componentName}'.`
+    validateEmail(props[propName]),
+    `Invalid email '${props[propName]}' sent to 'Gravatar'. Check the render method of '${componentName}'.`
   );
 };
 
@@ -44,7 +44,7 @@ var sizeType = (props, propName, componentName) => {
 
 var Gravatar = React.createClass({
   propTypes: {
-    email: emailType,
+    loginId: emailType,
     size: sizeType
   },
 
@@ -55,8 +55,8 @@ var Gravatar = React.createClass({
   },
 
   render () {
-    var { email, size } = this.props;
-    var hash = md5(email);
+    var { loginId, size } = this.props;
+    var hash = md5(loginId);
     var url = `${GRAVATAR_URL}/${hash}?s=${size*2}`;
     return <img src={url} width={size} />;
   }
